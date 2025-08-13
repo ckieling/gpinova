@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Governança de Dados - SWOT, Project Canvas, ROI e Análise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F0F4F8;
+            color: #102A43;
+        }
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .swot-card {
+            border-left-width: 4px;
+        }
+        .swot-strengths { border-color: #2490EB; }
+        .swot-weaknesses { border-color: #F7B924; }
+        .swot-opportunities { border-color: #28A745; }
+        .swot-threats { border-color: #DC3545; }
+        .pmc-header-box {
+            background-color: #ffe6cc;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .pmc-content-box {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            min-height: 100px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .pmc-grid-container {
+                display: grid;
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .pmc-col-content {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .pmc-column-2-to-4 {
+                grid-column: span 2 / span 2;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1rem;
+            }
+            .pmc-restrictions {
+                grid-column: span 2 / span 2;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased relative">
+    
+    <!-- Cabeçalho com o gradiente da logo e fonte Poppins -->
+    <header class="bg-gradient-to-br from-[#FBEF9A] to-[#FCB94D] shadow-lg sticky top-0 z-10">
+        <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo no canto esquerdo -->
+            <img src="logo.png" alt="GP Inova Logo" class="h-24 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/120x48/FBEF9A/102A43?text=LOGO';">
+            
+            <!-- Título e Subtítulo no canto direito, com cor de texto escura para contraste -->
+            <h1 class="text-2xl md:text-3xl font-bold text-[#102A43] text-right">Governança de Dados <span class="font-semibold block text-sm md:text-lg opacity-80">O Pilar Estratégico</span></h1>
+        </nav>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="text-center my-8 md:my-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">A Era da Informação e a Necessidade de Controle</h2>
+            <p class="text-lg max-w-3xl mx-auto text-[#486581] mb-8">
+                Em um mundo que gerará mais de <span class="font-bold text-[#2490EB]">180 zettabytes</span> de dados até 2025, a governança deixa de ser uma opção e se torna o alicerce para transformar dados brutos em ativos estratégicos valiosos.
+            </p>
+        </section>
+
+        <!-- Nova Seção para Detalhes do Projeto -->
+        <section id="project-details" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Detalhes do Projeto</h2>
+            <div class="section-card p-8 bg-blue-50 border-l-4 border-blue-400">
+                <div class="flex flex-col md:flex-row items-center justify-around text-center md:space-x-8 space-y-4 md:space-y-0">
+                    <div class="flex flex-col">
+                        <p class="text-lg font-bold text-[#2490EB]">Projeto</p>
+                        <span class="text-xl font-extrabold text-[#102A43]">Governança de Dados</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-lg font-bold text-[#28A745]">Empresa</p>
+                        <span class="text-xl font-extrabold text-[#102A43]">SAUR EQUIPAMENTOS</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-lg font-bold text-[#F7B924]">Equipe</p>
+                        <span class="text-xl font-extrabold text-[#102A43]">TI SAUR e GP Inova</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Análise de Causa Raiz: 5 Porquês (Modificada) -->
+        <section id="five-whys" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Análise de Causa Raiz: 5 Porquês</h2>
+            <div class="section-card p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <!-- Problema Principal -->
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-red-100 border-l-4 border-red-500 shadow">
+                        <div class="text-4xl mb-2">❌</div>
+                        <h4 class="font-bold text-lg mb-1">Problema Principal</h4>
+                        <p class="text-sm text-red-800">Base de dados descentralizada. Dificuldade de visualização integrada das informações pelas áreas.</p>
+                    </div>
+
+                    <div class="flex items-center justify-center text-5xl font-light text-gray-400 p-2 transform md:rotate-0 rotate-90">
+                        &rarr;
+                    </div>
+
+                    <!-- 1º Porquê -->
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-orange-100 border-l-4 border-orange-500 shadow">
+                        <div class="text-4xl mb-2">❓</div>
+                        <h4 class="font-bold text-lg mb-1">1º Porquê</h4>
+                        <p class="text-sm text-orange-800">Base de dados não padronizada.</p>
+                    </div>
+
+                    <div class="flex items-center justify-center text-5xl font-light text-gray-400 p-2 transform md:rotate-0 rotate-90">
+                        &darr;
+                    </div>
+
+                    <!-- 2º Porquê -->
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-yellow-100 border-l-4 border-yellow-500 shadow">
+                        <div class="text-4xl mb-2">❓</div>
+                        <h4 class="font-bold text-lg mb-1">2º Porquê</h4>
+                        <p class="text-sm text-yellow-800">Não há critério claro (procedimento) para elaborar customizações.</p>
+                    </div>
+
+                    <div class="flex items-center justify-center text-5xl font-light text-gray-400 p-2 transform md:rotate-0 rotate-90">
+                        &darr;
+                    </div>
+
+                    <!-- 3º Porquê -->
+                    <div class="flex flex-col items-center text-center p-4 rounded-lg bg-green-100 border-l-4 border-green-500 shadow">
+                        <div class="text-4xl mb-2">💡</div>
+                        <h4 class="font-bold text-lg mb-1">Causa Raiz</h4>
+                        <p class="text-sm text-green-800">Aspecto Cultural: foco em entregar informações individualmente para cada usuário, sem visão sistêmica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Planejamento 5W2H -->
+        <section id="five-wh-two-h" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Planejamento do Projeto: 5W2H</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="section-card bg-purple-50 border-l-4 border-purple-400">
+                    <h3 class="text-xl font-bold text-purple-800 mb-2">O Quê? (What)</h3>
+                    <p class="text-sm text-purple-700">Estruturar e implantar uma política de governança de dados e visão integrada.</p>
+                </div>
+                <div class="section-card bg-green-50 border-l-4 border-green-400">
+                    <h3 class="text-xl font-bold text-green-800 mb-2">Por Quê? (Why)</h3>
+                    <p class="text-sm text-green-700">Para padronizar a base de dados e garantir que as informações sejam integradas entre as áreas.</p>
+                </div>
+                <div class="section-card bg-yellow-50 border-l-4 border-yellow-400">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-2">Onde? (Where)</h3>
+                    <p class="text-sm text-yellow-700">Nas bases de dados e sistemas da SAUR EQUIPAMENTOS.</p>
+                </div>
+                <div class="section-card bg-pink-50 border-l-4 border-pink-400">
+                    <h3 class="text-xl font-bold text-pink-800 mb-2">Quando? (When)</h3>
+                    <p class="text-sm text-pink-700 font-semibold">Fases do projeto:</p>
+                    <ul class="list-disc ml-4 text-sm text-pink-700">
+                        <li>Fase 1: Mapeamento</li>
+                        <li>Fase 2: Definição de critérios</li>
+                        <li>Fase 3: Piloto</li>
+                    </ul>
+                </div>
+                <div class="section-card bg-indigo-50 border-l-4 border-indigo-400">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">Quem? (Who)</h3>
+                    <p class="text-sm text-indigo-700">Equipe de TI da SAUR EQUIPAMENTOS e GP INOVA.</p>
+                </div>
+                <div class="section-card bg-teal-50 border-l-4 border-teal-400">
+                    <h3 class="text-xl font-bold text-teal-800 mb-2">Como? (How)</h3>
+                    <p class="text-sm text-teal-700">Mapeamento dos dados, definição de critérios de padronização, utilização de matriz de esforço/impacto.</p>
+                </div>
+                <div class="section-card bg-orange-50 border-l-4 border-orange-400">
+                    <h3 class="text-xl font-bold text-orange-800 mb-2">Quanto? (How much)</h3>
+                    <p class="text-sm text-orange-700">R$ 0 (Zero). Sem custo para a SAUR EQUIPAMENTOS na fase inicial.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Análise SWOT (Original) -->
+        <section id="swot-analysis" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Análise SWOT da Governança de Dados</h2>
+            <div id="swot-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div class="section-card swot-card swot-strengths">
+                    <h3 class="text-2xl font-bold mb-4 text-[#102A43]">Forças 💪</h3>
+                    <ul id="swot-strengths-list" class="space-y-3 text-[#334E68]">
+                        <li><span class="font-semibold">Melhoria da Qualidade, Confiabilidade e Coerência dos Dados:</span> Eleva a confiança nas informações, resultando em decisões estratégicas mais precisas e alinhamento organizacional.</li>
+                        <li><span class="font-semibold">Otimização da Eficiência Operacional e Redução de Custos:</span> Simplifica processos, diminui retrabalho e desperdício.</li>
+                        <li><span class="font-semibold">Conformidade Regulatória e Mitigação de Riscos Legais:</span> Permite auditorias de conformidade e protege a empresa de multas e penalidades, fortalecendo a reputação.</li>
+                        <li><span class="font-semibold">Habilitador de Vantagem Competitiva Sustentável:</span> Transforma dados em um ativo estratégico para inovação, permitindo diferenciação no mercado e novas ofertas.</li>
+                    </ul>
+                </div>
+
+                <div class="section-card swot-card swot-weaknesses">
+                    <h3 class="text-2xl font-bold mb-4 text-[#102A43]">Fraquezas 📉</h3>
+                    <ul id="swot-weaknesses-list" class="space-y-3 text-[#334E68]">
+                        <li><span class="font-semibold">Resistência Cultural e Falta de Alinhamento Organizacional:</span> Dificulta a adoção, cria conflitos sobre a propriedade dos dados e reduz a eficácia do programa.</li>
+                        <li><span class="font-semibold">Custo e Complexidade na Implementação:</span> Exige alto investimento inicial em tecnologia, arquitetura e processos, podendo ser um impeditivo para algumas empresas.</li>
+                        <li><span class="font-semibold">Silos de Dados e Falta de Padronização:</span> Impede uma visão unificada da informação, compromete a interoperabilidade e sufoca iniciativas de inteligência de dados.</li>
+                        <li><span class="font-semibold">Má Gestão de Dados e Baixa Qualidade de Origem:</span> Leva a decisões equivocadas e aumenta os riscos de não conformidade, minando a confiança nos dados e no sistema.</li>
+                    </ul>
+                </div>
+
+                <div class="section-card swot-card swot-opportunities">
+                    <h3 class="text-2xl font-bold mb-4 text-[#102A43]">Oportunidades 🚀</h3>
+                    <ul id="swot-opportunities-list" class="space-y-3 text-[#334E68]">
+                        <li><span class="font-semibold">Monetização de Dados e Geração de Novos Fluxos de Receita:</span> Permite extrair valor econômico dos dados, seja por meio de otimizações internas ou da venda de _insights_.</li>
+                        <li><span class="font-semibold">Habilitação de Analytics Avançado e Aplicações de IA/ML:</span> Proporciona a base para o desenvolvimento de soluções de ponta, impulsionando a inovação e a tomada de decisões preditivas.</li>
+                        <li><span class="font-semibold">Fortalecimento da Confiança e Expansão Estratégica:</span> A conformidade com a LGPD/GDPR se torna um diferencial competitivo que facilita a entrada em novos mercados e atrai clientes.</li>
+                        <li><span class="font-semibold">Consolidação da Jornada de Transformação Digital:</span> Atua como o alicerce para iniciativas digitais, organizando e disponibilizando dados para impulsionar a eficiência e a inovação em toda a empresa.</li>
+                    </ul>
+                </div>
+
+                <div class="section-card swot-card swot-threats">
+                    <h3 class="text-2xl font-bold mb-4 text-[#102A43]">Ameaças ⚠️</h3>
+                    <ul id="swot-threats-list" class="space-y-3 text-[#334E68]">
+                        <li><span class="font-semibold">Sanções e Multas Regulatórias:</span> O não cumprimento de leis como a LGPD pode resultar em penalidades financeiras severas e suspensão de atividades.</li>
+                        <li><span class="font-semibold">Riscos de Segurança e Vazamento de Dados:</span> A ausência de governança aumenta a vulnerabilidade a incidentes de segurança que causam danos financeiros e reputacionais.</li>
+                        <li><span class="font-semibold">Perda de Competitividade e Relevância Estratégica:</span> Empresas que negligenciam a governança perdem terreno para concorrentes mais ágeis e orientados por dados.</li>
+                        <li><span class="font-semibold">Ameaça do _Shadow IT_ e Dificuldade de Controle:</span> A proliferação de sistemas não autorizados cria vulnerabilidades, dificulta o monitoramento e impede a aplicação de políticas de segurança.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção do Project Model Canvas -->
+        <section id="project-canvas" class="my-16">
+            <div class="bg-gradient-to-br from-[#ffaddd] to-[#ffcce6] p-8 rounded-xl shadow-lg">
+                <div class="flex flex-col lg:flex-row items-stretch gap-4 mb-8">
+                    <div class="w-full lg:w-1/5 flex-shrink-1">
+                        <img src="logosaur.png" alt="Idealizadoras do Projeto" class="w-auto h-full object-cover rounded-xl shadow-lg" onerror="this.onerror=null;this.src='https://placehold.co/800x400/90B7D6/ffffff?text=logosaur.png+not+found';">
+                    </div>
+
+                    <div class="w-full lg:w-4/5 bg-white p-6 rounded-xl shadow-md">
+                        <h1 class="text-3xl font-bold mb-4 text-[#102A43]">Project Model Canvas (PMC)</h1>
+                        <div class="space-y-4">
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <label class="font-semibold text-[#486581] w-32">Nome do Projeto:</label>
+                                <input type="text" value="Governança de Dados" class="flex-grow p-2 border border-gray-300 rounded-md" readonly>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <label class="font-semibold text-[#486581] w-32">Gestor do Projeto:</label>
+                                <input type="text" value="T.I Saur + Carol Cotripal (heheh)" class="flex-grow p-2 border border-gray-300 rounded-md" readonly>
+                            </div>
+                            <div class="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <label class="font-semibold text-[#486581] w-32">Data:</label>
+                                <input type="text" value="Agosto de 2025" class="flex-grow p-2 border border-gray-300 rounded-md" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="text-3xl font-bold text-center mb-10 text-[#102A43]">Project Model Canvas: Implementação da Governança</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    
+                    <!-- Coluna 1: Por Quê? -->
+                    <div class="flex flex-col space-y-4">
+                        <div class="pmc-header-box">Por Quê?</div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Justificativa</h4>
+                            <p class="text-[#486581] text-sm">Silos de dados, baixa qualidade e riscos regulatórios (LGPD) impedem decisões estratégicas ágeis e a inovação.</p>
+                        </div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Objetivo SMART</h4>
+                            <p class="text-[#486581] text-sm">Aumentar a qualidade dos dados em 20% e garantir 100% de conformidade com a LGPD em 12 meses.</p>
+                        </div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Benefícios</h4>
+                            <p class="text-[#486581] text-sm">Redução de Riscos, Decisões Estratégicas, Eficiência Operacional e Habilitação da Inovação.</p>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2: O Quê? -->
+                    <div class="flex flex-col space-y-4">
+                        <div class="pmc-header-box">O Quê?</div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Produto</h4>
+                            <p class="text-[#486581] text-sm">Programa de Governança com framework claro, catálogo de dados centralizado e monitoramento de qualidade.</p>
+                        </div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Requisitos</h4>
+                            <p class="text-[#486581] text-sm"><span class="font-semibold">Negócio:</span> Visão unificada, conformidade LGPD. <span class="font-semibold">Técnicos:</span> Plataforma de catálogo, integração com sistemas.</p>
+                        </div>
+                    </div>
+
+                    <!-- Colunas 3, 4 e Bloco de Restrições -->
+                    <div class="col-span-1 sm:col-span-2 lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <!-- Coluna 3: Quem? -->
+                        <div class="flex flex-col space-y-4">
+                            <div class="pmc-header-box">Quem?</div>
+                            <div class="pmc-content-box">
+                                <h4 class="font-bold text-[#102A43] mb-1">Stakeholders Externos</h4>
+                                <p class="text-[#486581] text-sm">ANPD, Consultoria Jurídica Externa, Fornecedores e Auditores.</p>
+                            </div>
+                            <div class="pmc-content-box">
+                                <h4 class="font-bold text-[#102A43] mb-1">Equipe</h4>
+                                <p class="text-[#486581] text-sm">Patrocinador Executivo, Gerente de Projeto, Data Stewards, Arquiteto de Dados e DPO.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Coluna 4: Como? -->
+                        <div class="flex flex-col space-y-4">
+                            <div class="pmc-header-box">Como?</div>
+                            <div class="pmc-content-box">
+                                <h4 class="font-bold text-[#102A43] mb-1">Produto (Grupo de Entrega)</h4>
+                                <p class="text-[#486581] text-sm">Fase 1 (Diagnóstico), Fase 2 (Estrutura e Ferramentas) e Fase 3 (Rollout e Sustentação).</p>
+                            </div>
+                            <div class="pmc-content-box">
+                                <h4 class="font-bold text-[#102A43] mb-1">Grupo de Entrega</h4>
+                                <p class="text-[#486581] text-sm">Metodologia Ágil, plano de comunicação e sustentação contínua.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bloco de Restrições -->
+                        <div class="col-span-1 sm:col-span-2 flex flex-col space-y-4">
+                            <div class="pmc-header-box">Restrições</div>
+                            <div class="pmc-content-box">
+                                <p class="text-[#486581] text-sm"><span class="font-semibold">Orçamento:</span> Fixo. <span class="font-semibold">Tempo:</span> 12 meses. <span class="font-semibold">Cultural:</span> Resistência à mudança (foco individual). <span class="font-semibold">Tecnológica:</span> Integração com sistemas legados.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 5: Quando?/Quanto? -->
+                    <div class="flex flex-col space-y-4">
+                        <div class="pmc-header-box">Quando?/Quanto?</div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Riscos</h4>
+                            <p class="text-[#486581] text-sm">Falta de patrocínio, baixa adesão e orçamento excedido.</p>
+                        </div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Linha do Tempo</h4>
+                            <p class="text-[#486581] text-sm"><span class="font-semibold">Meses 1-2:</span> Diagnóstico. <span class="font-semibold">Meses 3-6:</span> Implementação. <span class="font-semibold">Meses 7-12:</span> Rollout e monitoramento.</p>
+                        </div>
+                        <div class="pmc-content-box">
+                            <h4 class="font-bold text-[#102A43] mb-1">Custos</h4>
+                            <p class="text-[#486581] text-sm">Licenças de software, consultoria, equipe e treinamento.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Nova Seção de ROI -->
+        <section id="roi-analysis" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Análise de ROI: Justificando o Investimento</h2>
+            <div class="section-card p-8 text-center bg-gray-100 border-l-4 border-gray-400">
+                <div class="flex items-center justify-center space-x-4 mb-4">
+                    <div class="text-5xl text-[#28A745]">📈</div>
+                    <h3 class="text-2xl font-bold text-[#102A43]">ROI do Projeto de Governança de Dados</h3>
+                </div>
+                <p class="text-lg max-w-2xl mx-auto text-[#486581]">
+                    Calcular o ROI é fundamental para demonstrar o valor tangível da governança de dados. Ele mostra o retorno financeiro obtido através da redução de custos e do aumento de receitas, justificando o investimento inicial.
+                </p>
+                <div class="mt-8 flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-12">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#28A745]">
+                        <h4 class="text-xl font-bold mb-2">Fórmula Básica</h4>
+                        <p class="text-sm text-[#486581] font-mono">ROI = (Ganho do Investimento - Custo do Investimento) / Custo do Investimento</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#2490EB]">
+                        <h4 class="text-xl font-bold mb-2">Exemplo</h4>
+                        <p class="text-sm text-[#486581]">
+                            Redução de <span class="font-semibold text-green-700">R$ 150.000</span> em custos por ano e aumento de <span class="font-semibold text-green-700">R$ 50.000</span> em novas receitas, com um investimento inicial de <span class="font-semibold text-red-700">R$ 100.000</span>.
+                        </p>
+                        <p class="text-2xl font-black text-[#28A745] mt-4">ROI = 100%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kpis" class="my-16">
+             <h2 class="text-3xl font-bold text-center mb-10">Governança em Números: O Impacto no Negócio</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div class="section-card text-center">
+                     <h3 class="text-xl font-semibold text-[#486581] mb-2">Essencial para a Transformação Digital</h3>
+                     <p class="text-6xl font-black text-[#2490EB]">84%</p>
+                     <p class="text-md text-[#627D98] mt-2">das empresas consideram a governança de dados crucial para o sucesso de suas iniciativas digitais (Forbes).</p>
+                 </div>
+                 <div class="section-card text-center">
+                     <h3 class="text-xl font-semibold text-[#486581] mb-2">Vantagem Competitiva Direta</h3>
+                     <p class="text-6xl font-black text-[#2490EB]">33%</p>
+                     <p class="text-md text-[#627D98] mt-2">é a maior probabilidade de superar concorrentes para empresas que investem em governança (Gartner).</p>
+                 </div>
+             </div>
+        </section>
+
+        <section id="charts" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">Visualizando Riscos e Oportunidades</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <div class="section-card">
+                    <h3 class="text-xl font-bold text-center mb-4">Ameaça Regulatória: LGPD vs. GDPR</h3>
+                    <p class="text-center text-sm text-[#627D98] mb-6">Comparativo do valor máximo das multas, destacando o alto risco financeiro do não cumprimento.</p>
+                    <div class="chart-container">
+                        <canvas id="finesChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <h3 class="text-xl font-bold text-center mb-4">Oportunidade: Potencial de Monetização de Dados</h3>
+                    <p class="text-center text-sm text-[#627D98] mb-6">A governança abre portas para gerar receita, seja otimizando processos internos ou criando novos produtos de dados.</p>
+                    <div class="chart-container">
+                        <canvas id="monetizationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="process-flow" class="my-16">
+            <h2 class="text-3xl font-bold text-center mb-10">A Jornada da Governança de Dados</h2>
+            <div class="section-card p-8">
+                <div class="flex flex-col md:flex-row items-center justify-around space-y-6 md:space-y-0 md:space-x-6 text-center">
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl mb-2">🏛️</div>
+                        <h4 class="font-bold text-lg">Fundação</h4>
+                        <p class="text-sm text-[#486581]">Definir políticas, padrões e responsabilidades.</p>
+                    </div>
+                    <div class="text-4xl text-[#627D98] font-light transform md:rotate-0 rotate-90">&rarr;</div>
+                     <div class="flex flex-col items-center">
+                        <div class="text-4xl mb-2">🔍</div>
+                        <h4 class="font-bold text-lg">Implementação</h4>
+                        <p class="text-sm text-[#486581]">Mapear dados, quebrar silos e garantir qualidade.</p>
+                    </div>
+                    <div class="text-4xl text-[#627D98] font-light transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl mb-2">💡</div>
+                        <h4 class="font-bold text-lg">Inovação</h4>
+                        <p class="text-sm text-[#486581]">Habilitar Analytics, IA e novos modelos de negócio.</p>
+                    </div>
+                     <div class="text-4xl text-[#627D98] font-light transform md:rotate-0 rotate-90">&rarr;</div>
+                    <div class="flex flex-col items-center">
+                        <div class="text-4xl mb-2">🏆</div>
+                        <h4 class="font-bold text-lg">Valor Contínuo</h4>
+                        <p class="text-sm text-[#486581]">Manter a conformidade e a vantagem competitiva.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white mt-16 py-6">
+        <div class="container mx-auto text-center text-[#627D98]">
+            <p>&copy; 2025 Análise Estratégica de Dados. Todos os direitos reservados.</p>
+            <p class="text-sm mt-1">Infográfico gerado para fins de demonstração e análise estratégica.</p>
+        </div>
+    </footer>
+
+    <script>
+        const wrapLabel = (label, maxWidth = 16) => {
+            if (label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            words.forEach(word => {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            });
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+
+        const finesChartCtx = document.getElementById('finesChart').getContext('2d');
+        const finesChart = new Chart(finesChartCtx, {
+            type: 'bar',
+            data: {
+                labels: ['LGPD (Brasil)', 'GDPR (Europa)'],
+                datasets: [{
+                    label: 'Multa Máxima (em milhões de R$)',
+                    data: [50, 110], 
+                    backgroundColor: ['#334E68', '#2490EB'],
+                    borderColor: ['#102A43', '#1B78C2'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Valor (Milhões de R$)',
+                            color: '#486581'
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+
+        const monetizationChartCtx = document.getElementById('monetizationChart').getContext('2d');
+        const monetizationChart = new Chart(monetizationChartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Otimização Interna (Indireta)', 'Novos Produtos (Direta)'],
+                datasets: [{
+                    label: 'Potencial de Monetização',
+                    data: [65, 35],
+                    backgroundColor: ['#486581', '#2490EB'],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: tooltipTitleCallback
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
+
